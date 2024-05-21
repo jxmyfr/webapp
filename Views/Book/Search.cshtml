@@ -1,0 +1,32 @@
+﻿@model IEnumerable<DBFirst.ViewModels.BookCategoryPublisherViewModel>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Titel"] = "รายการหนังสือ";
+}
+
+<h1>รายการหนังสือที่ค้นหา</h1>
+
+@foreach(var Model in Model){
+    <div class="card-header border border-dark">
+        <h2>@Model.BookName</h2>
+        <span class="badge bg-danger">
+            @Model.CategoryName
+        </span>
+    </div>
+    <div class="card-body">
+        <p class="card-text">
+            @Model.PublishName
+            @Model.Isbn
+            @Model.BookCost
+            @Model.BookPrice
+        </p>
+    </div>
+    <div class="card-footer text-muted">
+        <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@Model.BookId">แก้ไข้</a>
+        <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@Model.BookId">ลบ</a>
+        <a class="btn btn-outline-dark" asp-action="IndexViewModel" asp-route-id="@Model.BookId">หน้าหลัก</a>
+
+    </div>
+}
